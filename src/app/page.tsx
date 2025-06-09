@@ -1,103 +1,162 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import React from "react";
+import Navbar from "../components/Navbar"
+import ContactCard from "../components/ContactCard"
+import Modal from "../components/EmailModal";
+import Button from "../components/Button";
+
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="bg-black text-white min-h-screen font-sans">
+      
+      {/* Hero Section */}
+      <section className="flex flex-row justify-center text-center space-x-[30px] px-16 py-56">
+        <div className="relative inline-block">
+          <img
+            src="/images/kevinjoshua.png"
+            alt="My Picture"
+            className="rounded-[16px] w-[150px] h-[150px] mx-auto"
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <section className="text-left" >
+          <h1 className="text-[36px] font-semibold">Hey! I'm Kevin Joshua</h1>
+          <h1 className="text-[36px] w-[500px] font-normal">UI/UX Designer at [Current Employer]</h1>
+          <p className="text-xl w-[500px] mt-4 text-[#CBCBCB]">
+            You’ll find a collection of works I’ve crafted over the past two years. Each project reflects my growth, creativity, and dedication to creating impactful user experiences.
+          </p>
+          <p className="text-xl mt-4 text-[#CBCBCB]">
+            See my works?👇🏼
+          </p>
+          <div className="mt-6 space-x-4">
+            <Button
+              className="bg-white text-black px-8 py-4 rounded-full text-lg font-medium cursor-pointer"
+              onClick={()=>document.getElementById("works")?.scrollIntoView({behavior:"smooth"})}>
+              Design
+            </Button>
+            <button className="bg-white text-black px-8 py-4 rounded-full text-lg font-medium">Photography</button>
+            
+          </div>
+        </section>
+      </section>
+
+      {/* Mission Statement */}
+      <section className="flex flex-col space-y-4 items-center text-center py-[400px] px-[150px]">
+        <div className="w-[72px] h-[72px] bg-gradient-to-b from-[#6636BF] to-[#0047BB] rounded-[999px]"></div>
+        <div className="text-[36px] font-semibold mx-auto w-[1000px]">
+          I craft visually compelling, user–focused experiences and continuously evolve to push design boundaries.
+        </div>
+      </section>
+
+      {/* Design Process Section */}
+      <section className="text-center py-24 px-32">
+        <h2 className="text-[36px] font-semibold mb-6">My Design Process</h2>
+        <div className="mt-14 flex justify-center gap-14">
+
+            <svg width="220" height="220" viewBox="0 0 321 321" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M315.056 165.933C315.056 171.301 320.738 175.212 320.047 180.504C319.356 185.872 312.522 187.943 311.524 193.311C310.449 198.679 315.44 203.281 313.981 208.572C312.215 213.941 305.458 214.631 303.308 219.616C301.158 224.601 305.458 230.276 302.924 235.261C300.467 240.245 293.326 239.862 290.485 244.157C287.645 248.758 290.869 255.2 287.261 259.495C283.729 263.713 276.972 261.949 273.363 266.243C269.754 270.155 271.597 276.903 267.681 280.431C263.765 284.035 257.008 281.121 252.708 284.342C248.409 287.563 249.1 294.619 244.493 297.533C239.886 300.37 233.82 296.459 229.213 298.913C224.222 301.444 223.838 308.5 218.924 310.34C213.933 312.104 208.635 307.503 203.644 308.883C198.27 310.34 196.503 317.396 191.205 318.162C185.907 318.929 181.608 313.561 176.233 313.868C170.858 314.251 167.71 321 162.335 321C156.96 321 153.812 314.635 148.438 314.251C143.063 313.868 138.84 319.543 133.465 318.853C128.09 318.162 126.324 311.03 121.026 309.573C115.728 308.116 110.737 313.101 105.746 311.337C100.756 309.573 100.064 302.441 95.0736 299.987C90.0827 297.533 84.4008 301.751 79.7171 298.913C75.1101 296.076 75.8011 288.944 71.1942 285.799C66.8944 282.578 60.1375 285.416 56.2216 281.888C51.9217 278.284 54.0717 271.612 50.1557 267.7C46.2398 263.789 39.483 265.553 35.951 261.335C32.4189 257.041 35.6438 250.675 32.7261 245.997C29.8851 241.396 22.4372 242.086 19.9034 237.101C17.4463 232.5 21.6694 226.441 19.2123 221.456C17.0624 216.472 9.92163 215.781 8.15563 210.49C6.38963 205.505 11.7644 200.52 10.3055 195.152C8.84667 189.783 2.0898 187.713 1.39875 182.344C0.707709 176.976 6.77354 173.065 6.38963 167.773C6.00571 162.405 -0.367249 159.261 0.0166646 153.586C0.323795 148.217 6.77354 145.38 7.46458 140.088C8.15563 134.72 2.47371 130.502 3.54867 125.134C4.62362 119.765 11.7644 118.385 13.1465 113.017C14.9125 107.725 9.92163 102.74 12.0715 97.7554C14.2215 92.7706 21.3622 92.3871 23.8193 87.7857C26.2763 83.1843 22.7443 76.7423 25.5853 72.4477C28.4263 67.8463 35.567 68.92 39.099 64.6253C42.3239 60.4074 39.7901 53.582 43.3989 49.6708C46.9309 45.7596 54.0717 47.9069 57.9876 44.3792C61.9035 40.7747 60.4446 33.7192 65.1284 30.4983C69.3514 27.2773 75.8011 30.8817 80.4081 28.0442C85.0151 25.2067 85.0151 18.0745 89.6988 15.6204C94.3826 13.1663 99.9877 17.7677 105.362 15.6204C110.353 13.8565 111.428 6.72436 116.726 5.34394C122.101 3.88683 126.708 9.25513 132.006 8.18147C137.381 7.10781 139.838 0.359092 145.213 0.052332C150.587 -0.331118 154.119 5.72739 159.801 5.72739C165.176 5.72739 168.708 -0.637878 174.006 0.052332C179.381 0.359092 181.838 7.1845 187.213 8.18147C192.588 9.25513 196.504 3.58007 201.802 4.96049C207.176 6.4176 208.251 13.4731 213.549 15.237C218.54 17.0008 224.222 12.3994 229.213 14.8535C234.204 17.3843 234.204 24.4398 238.811 26.9705C243.418 29.8081 249.867 26.2803 254.167 29.4246C258.39 32.6456 257.392 39.7011 261.231 43.3055C265.531 46.9099 272.288 44.3792 275.82 48.2903C279.736 52.2015 276.895 58.9503 280.427 63.1682C283.959 67.4629 290.716 66.3892 293.941 70.6838C296.782 75.2852 293.25 81.3437 295.707 85.9451C298.164 90.5465 305.305 90.93 307.454 95.9148C309.604 100.9 304.997 106.191 306.763 111.56C308.529 116.851 315.286 118.308 316.745 123.293C318.127 128.661 312.445 132.879 313.136 138.248C313.827 143.616 320.661 146.454 320.968 151.745C321.506 157.113 315.056 160.641 315.056 165.933Z" fill="url(#paint0_linear_2661_1560)"/>
+            <defs>
+            <linearGradient id="paint0_linear_2661_1560" x1="160.644" y1="-0.0564911" x2="160.644" y2="367.473" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#6636BF"/>
+            <stop offset="1" stopColor="#0047BB"/>
+            </linearGradient>
+            </defs>
+            </svg>
+
+          <div className="mt-32">
+              <svg width="220" height="220" viewBox="0 0 321 321" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M315.056 165.933C315.056 171.301 320.738 175.212 320.047 180.504C319.356 185.872 312.522 187.943 311.524 193.311C310.449 198.679 315.44 203.281 313.981 208.572C312.215 213.941 305.458 214.631 303.308 219.616C301.158 224.601 305.458 230.276 302.924 235.261C300.467 240.245 293.326 239.862 290.485 244.157C287.645 248.758 290.869 255.2 287.261 259.495C283.729 263.713 276.972 261.949 273.363 266.243C269.754 270.155 271.597 276.903 267.681 280.431C263.765 284.035 257.008 281.121 252.708 284.342C248.409 287.563 249.1 294.619 244.493 297.533C239.886 300.37 233.82 296.459 229.213 298.913C224.222 301.444 223.838 308.5 218.924 310.34C213.933 312.104 208.635 307.503 203.644 308.883C198.27 310.34 196.503 317.396 191.205 318.162C185.907 318.929 181.608 313.561 176.233 313.868C170.858 314.251 167.71 321 162.335 321C156.96 321 153.812 314.635 148.438 314.251C143.063 313.868 138.84 319.543 133.465 318.853C128.09 318.162 126.324 311.03 121.026 309.573C115.728 308.116 110.737 313.101 105.746 311.337C100.756 309.573 100.064 302.441 95.0736 299.987C90.0827 297.533 84.4008 301.751 79.7171 298.913C75.1101 296.076 75.8011 288.944 71.1942 285.799C66.8944 282.578 60.1375 285.416 56.2216 281.888C51.9217 278.284 54.0717 271.612 50.1557 267.7C46.2398 263.789 39.483 265.553 35.951 261.335C32.4189 257.041 35.6438 250.675 32.7261 245.997C29.8851 241.396 22.4372 242.086 19.9034 237.101C17.4463 232.5 21.6694 226.441 19.2123 221.456C17.0624 216.472 9.92163 215.781 8.15563 210.49C6.38963 205.505 11.7644 200.52 10.3055 195.152C8.84667 189.783 2.0898 187.713 1.39875 182.344C0.707709 176.976 6.77354 173.065 6.38963 167.773C6.00571 162.405 -0.367249 159.261 0.0166646 153.586C0.323795 148.217 6.77354 145.38 7.46458 140.088C8.15563 134.72 2.47371 130.502 3.54867 125.134C4.62362 119.765 11.7644 118.385 13.1465 113.017C14.9125 107.725 9.92163 102.74 12.0715 97.7554C14.2215 92.7706 21.3622 92.3871 23.8193 87.7857C26.2763 83.1843 22.7443 76.7423 25.5853 72.4477C28.4263 67.8463 35.567 68.92 39.099 64.6253C42.3239 60.4074 39.7901 53.582 43.3989 49.6708C46.9309 45.7596 54.0717 47.9069 57.9876 44.3792C61.9035 40.7747 60.4446 33.7192 65.1284 30.4983C69.3514 27.2773 75.8011 30.8817 80.4081 28.0442C85.0151 25.2067 85.0151 18.0745 89.6988 15.6204C94.3826 13.1663 99.9877 17.7677 105.362 15.6204C110.353 13.8565 111.428 6.72436 116.726 5.34394C122.101 3.88683 126.708 9.25513 132.006 8.18147C137.381 7.10781 139.838 0.359092 145.213 0.052332C150.587 -0.331118 154.119 5.72739 159.801 5.72739C165.176 5.72739 168.708 -0.637878 174.006 0.052332C179.381 0.359092 181.838 7.1845 187.213 8.18147C192.588 9.25513 196.504 3.58007 201.802 4.96049C207.176 6.4176 208.251 13.4731 213.549 15.237C218.54 17.0008 224.222 12.3994 229.213 14.8535C234.204 17.3843 234.204 24.4398 238.811 26.9705C243.418 29.8081 249.867 26.2803 254.167 29.4246C258.39 32.6456 257.392 39.7011 261.231 43.3055C265.531 46.9099 272.288 44.3792 275.82 48.2903C279.736 52.2015 276.895 58.9503 280.427 63.1682C283.959 67.4629 290.716 66.3892 293.941 70.6838C296.782 75.2852 293.25 81.3437 295.707 85.9451C298.164 90.5465 305.305 90.93 307.454 95.9148C309.604 100.9 304.997 106.191 306.763 111.56C308.529 116.851 315.286 118.308 316.745 123.293C318.127 128.661 312.445 132.879 313.136 138.248C313.827 143.616 320.661 146.454 320.968 151.745C321.506 157.113 315.056 160.641 315.056 165.933Z" fill="url(#paint0_linear_2661_1560)"/>
+              <defs>
+              <linearGradient id="paint0_linear_2661_1560" x1="160.644" y1="-0.0564911" x2="160.644" y2="367.473" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#6636BF"/>
+              <stop offset="1" stop-color="#0047BB"/>
+              </linearGradient>
+              </defs>
+              </svg>
+          </div>
+
+          <div className="mt-32">
+              <svg width="220" height="220" viewBox="0 0 321 321" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M315.056 165.933C315.056 171.301 320.738 175.212 320.047 180.504C319.356 185.872 312.522 187.943 311.524 193.311C310.449 198.679 315.44 203.281 313.981 208.572C312.215 213.941 305.458 214.631 303.308 219.616C301.158 224.601 305.458 230.276 302.924 235.261C300.467 240.245 293.326 239.862 290.485 244.157C287.645 248.758 290.869 255.2 287.261 259.495C283.729 263.713 276.972 261.949 273.363 266.243C269.754 270.155 271.597 276.903 267.681 280.431C263.765 284.035 257.008 281.121 252.708 284.342C248.409 287.563 249.1 294.619 244.493 297.533C239.886 300.37 233.82 296.459 229.213 298.913C224.222 301.444 223.838 308.5 218.924 310.34C213.933 312.104 208.635 307.503 203.644 308.883C198.27 310.34 196.503 317.396 191.205 318.162C185.907 318.929 181.608 313.561 176.233 313.868C170.858 314.251 167.71 321 162.335 321C156.96 321 153.812 314.635 148.438 314.251C143.063 313.868 138.84 319.543 133.465 318.853C128.09 318.162 126.324 311.03 121.026 309.573C115.728 308.116 110.737 313.101 105.746 311.337C100.756 309.573 100.064 302.441 95.0736 299.987C90.0827 297.533 84.4008 301.751 79.7171 298.913C75.1101 296.076 75.8011 288.944 71.1942 285.799C66.8944 282.578 60.1375 285.416 56.2216 281.888C51.9217 278.284 54.0717 271.612 50.1557 267.7C46.2398 263.789 39.483 265.553 35.951 261.335C32.4189 257.041 35.6438 250.675 32.7261 245.997C29.8851 241.396 22.4372 242.086 19.9034 237.101C17.4463 232.5 21.6694 226.441 19.2123 221.456C17.0624 216.472 9.92163 215.781 8.15563 210.49C6.38963 205.505 11.7644 200.52 10.3055 195.152C8.84667 189.783 2.0898 187.713 1.39875 182.344C0.707709 176.976 6.77354 173.065 6.38963 167.773C6.00571 162.405 -0.367249 159.261 0.0166646 153.586C0.323795 148.217 6.77354 145.38 7.46458 140.088C8.15563 134.72 2.47371 130.502 3.54867 125.134C4.62362 119.765 11.7644 118.385 13.1465 113.017C14.9125 107.725 9.92163 102.74 12.0715 97.7554C14.2215 92.7706 21.3622 92.3871 23.8193 87.7857C26.2763 83.1843 22.7443 76.7423 25.5853 72.4477C28.4263 67.8463 35.567 68.92 39.099 64.6253C42.3239 60.4074 39.7901 53.582 43.3989 49.6708C46.9309 45.7596 54.0717 47.9069 57.9876 44.3792C61.9035 40.7747 60.4446 33.7192 65.1284 30.4983C69.3514 27.2773 75.8011 30.8817 80.4081 28.0442C85.0151 25.2067 85.0151 18.0745 89.6988 15.6204C94.3826 13.1663 99.9877 17.7677 105.362 15.6204C110.353 13.8565 111.428 6.72436 116.726 5.34394C122.101 3.88683 126.708 9.25513 132.006 8.18147C137.381 7.10781 139.838 0.359092 145.213 0.052332C150.587 -0.331118 154.119 5.72739 159.801 5.72739C165.176 5.72739 168.708 -0.637878 174.006 0.052332C179.381 0.359092 181.838 7.1845 187.213 8.18147C192.588 9.25513 196.504 3.58007 201.802 4.96049C207.176 6.4176 208.251 13.4731 213.549 15.237C218.54 17.0008 224.222 12.3994 229.213 14.8535C234.204 17.3843 234.204 24.4398 238.811 26.9705C243.418 29.8081 249.867 26.2803 254.167 29.4246C258.39 32.6456 257.392 39.7011 261.231 43.3055C265.531 46.9099 272.288 44.3792 275.82 48.2903C279.736 52.2015 276.895 58.9503 280.427 63.1682C283.959 67.4629 290.716 66.3892 293.941 70.6838C296.782 75.2852 293.25 81.3437 295.707 85.9451C298.164 90.5465 305.305 90.93 307.454 95.9148C309.604 100.9 304.997 106.191 306.763 111.56C308.529 116.851 315.286 118.308 316.745 123.293C318.127 128.661 312.445 132.879 313.136 138.248C313.827 143.616 320.661 146.454 320.968 151.745C321.506 157.113 315.056 160.641 315.056 165.933Z" fill="url(#paint0_linear_2661_1560)"/>
+              <defs>
+              <linearGradient id="paint0_linear_2661_1560" x1="160.644" y1="-0.0564911" x2="160.644" y2="367.473" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#6636BF"/>
+              <stop offset="1" stop-color="#0047BB"/>
+              </linearGradient>
+              </defs>
+              </svg>
+          </div>
+
+            <svg width="220" height="220" viewBox="0 0 321 321" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M315.056 165.933C315.056 171.301 320.738 175.212 320.047 180.504C319.356 185.872 312.522 187.943 311.524 193.311C310.449 198.679 315.44 203.281 313.981 208.572C312.215 213.941 305.458 214.631 303.308 219.616C301.158 224.601 305.458 230.276 302.924 235.261C300.467 240.245 293.326 239.862 290.485 244.157C287.645 248.758 290.869 255.2 287.261 259.495C283.729 263.713 276.972 261.949 273.363 266.243C269.754 270.155 271.597 276.903 267.681 280.431C263.765 284.035 257.008 281.121 252.708 284.342C248.409 287.563 249.1 294.619 244.493 297.533C239.886 300.37 233.82 296.459 229.213 298.913C224.222 301.444 223.838 308.5 218.924 310.34C213.933 312.104 208.635 307.503 203.644 308.883C198.27 310.34 196.503 317.396 191.205 318.162C185.907 318.929 181.608 313.561 176.233 313.868C170.858 314.251 167.71 321 162.335 321C156.96 321 153.812 314.635 148.438 314.251C143.063 313.868 138.84 319.543 133.465 318.853C128.09 318.162 126.324 311.03 121.026 309.573C115.728 308.116 110.737 313.101 105.746 311.337C100.756 309.573 100.064 302.441 95.0736 299.987C90.0827 297.533 84.4008 301.751 79.7171 298.913C75.1101 296.076 75.8011 288.944 71.1942 285.799C66.8944 282.578 60.1375 285.416 56.2216 281.888C51.9217 278.284 54.0717 271.612 50.1557 267.7C46.2398 263.789 39.483 265.553 35.951 261.335C32.4189 257.041 35.6438 250.675 32.7261 245.997C29.8851 241.396 22.4372 242.086 19.9034 237.101C17.4463 232.5 21.6694 226.441 19.2123 221.456C17.0624 216.472 9.92163 215.781 8.15563 210.49C6.38963 205.505 11.7644 200.52 10.3055 195.152C8.84667 189.783 2.0898 187.713 1.39875 182.344C0.707709 176.976 6.77354 173.065 6.38963 167.773C6.00571 162.405 -0.367249 159.261 0.0166646 153.586C0.323795 148.217 6.77354 145.38 7.46458 140.088C8.15563 134.72 2.47371 130.502 3.54867 125.134C4.62362 119.765 11.7644 118.385 13.1465 113.017C14.9125 107.725 9.92163 102.74 12.0715 97.7554C14.2215 92.7706 21.3622 92.3871 23.8193 87.7857C26.2763 83.1843 22.7443 76.7423 25.5853 72.4477C28.4263 67.8463 35.567 68.92 39.099 64.6253C42.3239 60.4074 39.7901 53.582 43.3989 49.6708C46.9309 45.7596 54.0717 47.9069 57.9876 44.3792C61.9035 40.7747 60.4446 33.7192 65.1284 30.4983C69.3514 27.2773 75.8011 30.8817 80.4081 28.0442C85.0151 25.2067 85.0151 18.0745 89.6988 15.6204C94.3826 13.1663 99.9877 17.7677 105.362 15.6204C110.353 13.8565 111.428 6.72436 116.726 5.34394C122.101 3.88683 126.708 9.25513 132.006 8.18147C137.381 7.10781 139.838 0.359092 145.213 0.052332C150.587 -0.331118 154.119 5.72739 159.801 5.72739C165.176 5.72739 168.708 -0.637878 174.006 0.052332C179.381 0.359092 181.838 7.1845 187.213 8.18147C192.588 9.25513 196.504 3.58007 201.802 4.96049C207.176 6.4176 208.251 13.4731 213.549 15.237C218.54 17.0008 224.222 12.3994 229.213 14.8535C234.204 17.3843 234.204 24.4398 238.811 26.9705C243.418 29.8081 249.867 26.2803 254.167 29.4246C258.39 32.6456 257.392 39.7011 261.231 43.3055C265.531 46.9099 272.288 44.3792 275.82 48.2903C279.736 52.2015 276.895 58.9503 280.427 63.1682C283.959 67.4629 290.716 66.3892 293.941 70.6838C296.782 75.2852 293.25 81.3437 295.707 85.9451C298.164 90.5465 305.305 90.93 307.454 95.9148C309.604 100.9 304.997 106.191 306.763 111.56C308.529 116.851 315.286 118.308 316.745 123.293C318.127 128.661 312.445 132.879 313.136 138.248C313.827 143.616 320.661 146.454 320.968 151.745C321.506 157.113 315.056 160.641 315.056 165.933Z" fill="url(#paint0_linear_2661_1560)"/>
+            <defs>
+            <linearGradient id="paint0_linear_2661_1560" x1="160.644" y1="-0.0564911" x2="160.644" y2="367.473" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#6636BF"/>
+            <stop offset="1" stop-color="#0047BB"/>
+            </linearGradient>
+            </defs>
+            </svg>
+        </div>
+      </section>
+
+      {/* Works Section */}
+      <section id="works" className="px-46 py-48">
+        <div className="flex flex-row space-x-4 justify-between mb-[48px]">
+          <div className="flex flex-col space-y-4">
+            <h2 className="text-7xl font-semibold mb-4">Works</h2>
+            <p className="text-[32px] max-w-lg mb-6 text-[#CBCBCB]">
+              These designs showcase the projects I crafted during my time with my previous company, reflecting collaboration, creativity, and impact.
+            </p>
+          </div>
+          <section className="bg-neutral-900 rounded-2xl p-8 flex flex-col justify-end items-start w-[500px] h-[600px]">
+              <div className="flex flex-col space-y-3 items-start">
+                <span className="bg-indigo-600 text-white px-[20px] py-[16px] rounded-full text-[16px] font-medium">
+                  Desktop
+                </span>
+                <h2 className="text-white text-4xl font-semibold mt-2">
+                  Research
+                </h2>
+              </div>
+            </section>
+        </div>
+        <section className="space-y-[48px]">
+          <section className="flex flex-row space-x-[48px]">
+            <section className="bg-neutral-900 rounded-2xl p-8 flex flex-col justify-end items-start w-[671px] h-[600px]">
+              <div className="flex flex-col space-y-3 items-start">
+                <span className="bg-indigo-600 text-white px-[20px] py-[16px] rounded-full text-[16px] font-medium">
+                  Desktop & Mobile
+                </span>
+                <h2 className="text-white text-4xl font-semibold">
+                  Leads Management System
+                </h2>
+              </div>
+            </section>
+            <section className="bg-neutral-900 rounded-2xl p-8 flex flex-col justify-end items-start w-[817px] h-[600px]">
+              <div className="flex flex-col space-y-3 items-start">
+                <span className="bg-indigo-600 text-white px-[20px] py-[16px] rounded-full text-[16px] font-medium">
+                  Desktop
+                </span>
+                <h2 className="text-white text-4xl font-semibold mt-2">
+                  Research
+                </h2>
+              </div>
+            </section>
+          </section>
+          <section className="bg-neutral-900 rounded-2xl p-8 flex flex-col justify-end items-start w-[900px] h-[500px]">
+            <div className="flex flex-col space-y-3 items-start">
+              <span className="bg-indigo-600 text-white px-[20px] py-[16px] rounded-full text-[16px] font-medium">
+                Desktop & Mobile
+              </span>
+              <h2 className="text-white text-4xl font-semibold mt-2">
+                Sportivohub
+              </h2>
+            </div>
+          </section>
+        </section>
+      </section>
+
+      {/* Contact Section */}
+      <ContactCard />
     </div>
   );
 }
